@@ -10,6 +10,7 @@ function Test(description) {
 
     return {
         isEqual,
+        isApproximately,
         padd: (n = 1) => { padding += n; },
         removePadd: () => {
             padding--;
@@ -21,6 +22,15 @@ function Test(description) {
             console.timeEnd("Test");
         }
 
+    }
+}
+
+function isApproximately(recived, expected, maxDiff, description) {
+
+    if (Math.abs(recived - expected) <= maxDiff) {
+        console.log(`${addPadd(padding)}🟢 ${description}`);
+    } else {
+        console.log(`${addPadd(padding)}🔴 ${description}, forventett ${expected}, fikk ${recived}, diff was ${recived - expected}`);
     }
 }
 
